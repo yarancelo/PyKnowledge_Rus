@@ -6,7 +6,6 @@
       {
         "id": "f5fff7a68288e5ca",
         "type": "tabs",
-        "dimension": 52.84296028880866,
         "children": [
           {
             "id": "e7ff7cb959ca4ef6",
@@ -14,29 +13,46 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Выборка данных.md",
+                "file": "psycopg.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Выборка данных"
+              "title": "psycopg"
+            }
+          },
+          {
+            "id": "39a258ea0be31eac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Добавление таблиц.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Добавление таблиц"
             }
           }
         ]
       },
       {
-        "id": "2448b05ddd1f5638",
+        "id": "2e17ce637acef4ff",
         "type": "tabs",
-        "dimension": 47.15703971119133,
         "children": [
           {
-            "id": "4373282e308356db",
+            "id": "c57bb29a01b07b65",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "SQLAlchemy.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SQLAlchemy"
             }
           }
         ]
@@ -188,18 +204,21 @@
       "graph:Open graph view": false
     }
   },
-  "active": "4373282e308356db",
+  "active": "c57bb29a01b07b65",
   "lastOpenFiles": [
-    "Выборка данных.md",
-    "Математические операторы.md",
-    "Многие ко многим.md",
+    "psycopg.md",
     "Работа с БД.md",
-    "Один к одному.md",
-    "Один ко многим.md",
-    "Заполнение.md",
+    "asyncpg.md",
     "Добавление таблиц.md",
-    "Типы данных PostgreSQL.md",
+    "SQLAlchemy.md",
+    "Заполнение.md",
+    "Выборка данных.md",
     "PostgreSQL.md",
+    "Типы данных PostgreSQL.md",
+    "Один ко многим.md",
+    "Один к одному.md",
+    "Многие ко многим.md",
+    "Математические операторы.md",
     "Установка Postgres.md",
     "Git.md",
     "Менеджер состояния.md",
@@ -213,9 +232,6 @@
     "Условные операторы.md",
     "Словарь.md",
     "Исключения.md",
-    "Тип bytes.md",
-    "Модуль functools.md",
-    "Строка.md",
     "Строки/Методы строк",
     "Строки",
     "Untitled.base",
