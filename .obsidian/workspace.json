@@ -6,51 +6,35 @@
       {
         "id": "f5fff7a68288e5ca",
         "type": "tabs",
-        "dimension": 47.20812182741117,
         "children": [
           {
             "id": "e7ff7cb959ca4ef6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SQLAlchemy ORM.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SQLAlchemy ORM"
+            }
+          }
+        ]
+      },
+      {
+        "id": "757e62d0ce710cab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "39a258ea0be31eac",
             "type": "leaf",
             "state": {
               "type": "graph",
               "state": {},
               "icon": "lucide-git-fork",
               "title": "Graph view"
-            }
-          },
-          {
-            "id": "39a258ea0be31eac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Добавление таблиц.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Добавление таблиц"
-            }
-          }
-        ]
-      },
-      {
-        "id": "2e17ce637acef4ff",
-        "type": "tabs",
-        "dimension": 52.79187817258884,
-        "children": [
-          {
-            "id": "c57bb29a01b07b65",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "SQLAlchemy Core.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "SQLAlchemy Core"
             }
           }
         ]
@@ -202,19 +186,22 @@
   },
   "active": "e7ff7cb959ca4ef6",
   "lastOpenFiles": [
+    "SQLAlchemy ORM.md",
+    "Добавление таблиц.md",
+    "ACID.md",
+    "PostgreSQL.md",
     "SQLAlchemy Core.md",
-    "Один к одному (SQL).md",
+    "Pydantic.md",
+    "psycopg.md",
     "SQLAlchemy.md",
+    "Модули.md",
+    "Один к одному (SQL).md",
     "Многие ко многим (SQL).md",
     "Работа с БД.md",
-    "Pydantic.md",
     "Один ко многим (SQL).md",
-    "psycopg.md",
     "Заполнение.md",
-    "PostgreSQL.md",
     "Установка Postgres.md",
     "asyncpg.md",
-    "Добавление таблиц.md",
     "Выборка данных.md",
     "Типы данных PostgreSQL.md",
     "Математические операторы.md",
@@ -225,9 +212,6 @@
     "Изменяемые и неизменяемые структуры данных.md",
     "Встроенные функции.md",
     "Классы.md",
-    "Декоратор.md",
-    "Функции.md",
-    "Условные операторы.md",
     "Строки/Методы строк",
     "Строки",
     "Untitled.base",
