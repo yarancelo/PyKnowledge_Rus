@@ -4,31 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "f5fff7a68288e5ca",
+        "id": "ddea4a37af8f573b",
         "type": "tabs",
         "children": [
           {
-            "id": "e7ff7cb959ca4ef6",
+            "id": "a038c91992884564",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SQLAlchemy ORM.md",
+                "file": "Модуль Pydantic.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQLAlchemy ORM"
+              "title": "Модуль Pydantic"
             }
           }
         ]
       },
       {
-        "id": "757e62d0ce710cab",
+        "id": "5f1db4884f17521a",
         "type": "tabs",
         "children": [
           {
-            "id": "39a258ea0be31eac",
+            "id": "1cd1e045cfc0fe01",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -184,8 +184,14 @@
       "graph:Open graph view": false
     }
   },
-  "active": "e7ff7cb959ca4ef6",
+  "active": "1cd1e045cfc0fe01",
   "lastOpenFiles": [
+    "Модуль Pydantic.md",
+    "Список.md",
+    "Модуль time.md",
+    "2025-10-23.md",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
     "SQLAlchemy ORM.md",
     "Добавление таблиц.md",
     "ACID.md",
@@ -208,13 +214,8 @@
     "Git.md",
     "Менеджер состояния.md",
     "Dunder-методы.md",
-    "Метод.md",
-    "Изменяемые и неизменяемые структуры данных.md",
-    "Встроенные функции.md",
-    "Классы.md",
     "Строки/Методы строк",
     "Строки",
-    "Untitled.base",
-    "Untitled.canvas"
+    "Untitled.base"
   ]
 }

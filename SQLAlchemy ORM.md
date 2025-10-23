@@ -269,3 +269,97 @@ class UserAddress(Base): # таблица ассоциации
 * select in load - делает один запрос для загрузки основной таблицы и еще один для загрузки всех связанных сущностей. Рекомендуется для использования по умолчанию, если не нужна агрегация в связанных сущностях. Походит для больших таблиц. 
 * subquerry load - делает один запрос, содержащий внутри себя другой подзапрос со связанными сущностями. Решает проблему n+1, однако менее эффективна чем select in load. Используется в специфических случаях.
 * raise loading - нужна для выявления n+1 проблемы, в случае ее возникновения выбрасывает исключение. Подходит для отладки. 
+
+Рассмотрим схему в которой можно отчетливо видеть N+1 проблему:
+```python
+class User(Base):
+  __tablename__ = 'users'
+  id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+  name: Mapped[str] = mapped_column(nullable=False)
+
+  tasks: Mapped[list['Task']] = relationship(back_populates='user', uselist=True, lazy="select")
+
+  def __repr__(self):
+    return f"User: {self.id=}, {self.name=}"
+  
+
+class Task(Base):
+  __tablename__ = 'tasks'
+  id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+  name: Mapped[str] = mapped_column(nullable=False)
+  responsible_fk = mapped_column(ForeignKey('users.id'))
+
+  user: Mapped['User'] = relationship(back_populates='tasks', uselist=False)
+
+  def __repr__(self):
+    return f'Task: {self.id=}, {self.name=}, {self.responsible_fk=}'
+```
+
+Можно увидеть, что в атрибуте tasks таблицы users указан параметр lazy="select". Это означает, что будет использоваться стратегия "lazy load". Наполним таблицу данными и произведем запрос пользователей и их задач:
+```python:
+with SessionLocal.begin() as conn:
+    users = conn.scalars(select(User)).all()
+    for user in users:
+        print(user.name)
+        for task in user.tasks:
+          print("   ", task.name)
+```
+
+Мы увидим в выводе, что сначала ORM запросит список всех пользователей, а позже запросит задачи для каждого из пользователей:
+```
+2025-10-23 12:41:46,819 INFO sqlalchemy.engine.Engine SELECT tasks.id AS tasks_id, tasks.name AS tasks_name, tasks.responsible_fk AS tasks_responsible_fk
+FROM tasks
+WHERE %(param_1)s::INTEGER = tasks.responsible_fk
+2025-10-23 12:41:46,820 INFO sqlalchemy.engine.Engine [generated in 0.00031s] {'param_1': 1}
+    Задание 1
+    Задание 2
+maxim
+2025-10-23 12:41:46,821 INFO sqlalchemy.engine.Engine SELECT tasks.id AS tasks_id, tasks.name AS tasks_name, tasks.responsible_fk AS tasks_responsible_fk
+FROM tasks
+WHERE %(param_1)s::INTEGER = tasks.responsible_fk
+2025-10-23 12:41:46,822 INFO sqlalchemy.engine.Engine [cached since 0.002195s ago] {'param_1': 2}
+    Задание 5
+    Задание 6
+nikita
+2025-10-23 12:41:46,823 INFO sqlalchemy.engine.Engine SELECT tasks.id AS tasks_id, tasks.name AS tasks_name, tasks.responsible_fk AS tasks_responsible_fk
+FROM tasks
+WHERE %(param_1)s::INTEGER = tasks.responsible_fk
+2025-10-23 12:41:46,823 INFO sqlalchemy.engine.Engine [cached since 0.003856s ago] {'param_1': 3}
+    Задание 3
+    Задание 4
+pavel
+2025-10-23 12:41:46,825 INFO sqlalchemy.engine.Engine SELECT tasks.id AS tasks_id, tasks.name AS tasks_name, tasks.responsible_fk AS tasks_responsible_fk
+FROM tasks
+WHERE %(param_1)s::INTEGER = tasks.responsible_fk
+2025-10-23 12:41:46,825 INFO sqlalchemy.engine.Engine [cached since 0.005444s ago] {'param_1': 4}
+    Задание 7
+    Задание 8
+2025-10-23 12:41:46,826 INFO sqlalchemy.engine.Engine COMMIT
+```
+В данном логе видно, что используя lazy load, для получения информации о 4 пользователях, мы сделали 5 запросов в БД: один запрос чтобы получить всех пользователей и по запросу на каждого пользователя для получения задач. Теперь можно поменять lazy="select" на lazy="selectin":
+
+```
+2025-10-23 12:45:12,891 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-10-23 12:45:12,892 INFO sqlalchemy.engine.Engine SELECT users.id, users.name
+FROM users
+2025-10-23 12:45:12,892 INFO sqlalchemy.engine.Engine [generated in 0.00025s] {}
+2025-10-23 12:45:12,894 INFO sqlalchemy.engine.Engine SELECT tasks.responsible_fk AS tasks_responsible_fk, tasks.id AS tasks_id, tasks.name AS tasks_name
+FROM tasks
+WHERE tasks.responsible_fk IN (%(primary_keys_1)s::INTEGER, %(primary_keys_2)s::INTEGER, %(primary_keys_3)s::INTEGER, %(primary_keys_4)s::INTEGER)
+2025-10-23 12:45:12,895 INFO sqlalchemy.engine.Engine [generated in 0.00035s] {'primary_keys_1': 1, 'primary_keys_2': 2, 'primary_keys_3': 3, 'primary_keys_4': 4}
+vladimir
+    Задание 1
+    Задание 2
+maxim
+    Задание 5
+    Задание 6
+nikita
+    Задание 3
+    Задание 4
+pavel
+    Задание 7
+    Задание 8
+2025-10-23 12:45:12,896 INFO sqlalchemy.engine.Engine COMMIT
+```
+
+Теперь, вместо 5 запросов мы видим всего 2.
