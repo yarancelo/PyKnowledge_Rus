@@ -4,45 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "ddea4a37af8f573b",
+        "id": "2314f5eaf9893c97",
         "type": "tabs",
         "children": [
           {
-            "id": "a038c91992884564",
+            "id": "cd589fa5afadc07a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Модуль Pydantic.md",
+                "file": "Архитектура ПО.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Модуль Pydantic"
-            }
-          },
-          {
-            "id": "177d089ebd6b9ef0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "venv.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "venv"
+              "title": "Архитектура ПО"
             }
           }
         ]
       },
       {
-        "id": "5f1db4884f17521a",
+        "id": "ab436531ab869da8",
         "type": "tabs",
         "children": [
           {
-            "id": "1cd1e045cfc0fe01",
+            "id": "4e07abf85474e28c",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -124,6 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Циклы.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Циклы"
             }
           },
           {
@@ -142,11 +129,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Циклы.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Циклы"
             }
           },
           {
@@ -180,7 +168,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -198,38 +186,37 @@
       "graph:Open graph view": false
     }
   },
-  "active": "1cd1e045cfc0fe01",
+  "active": "4e07abf85474e28c",
   "lastOpenFiles": [
-    "Модуль Pydantic.md",
-    "Pydantic.md",
-    "venv.md",
-    "Список.md",
-    "Модуль time.md",
-    "2025-10-23.md",
-    "Untitled 1.canvas",
-    "Untitled.canvas",
-    "SQLAlchemy ORM.md",
-    "Добавление таблиц.md",
-    "ACID.md",
-    "PostgreSQL.md",
-    "SQLAlchemy Core.md",
-    "psycopg.md",
-    "SQLAlchemy.md",
-    "Модули.md",
-    "Один к одному (SQL).md",
-    "Многие ко многим (SQL).md",
-    "Работа с БД.md",
+    "Архитектура ПО.md",
     "Один ко многим (SQL).md",
-    "Заполнение.md",
-    "Установка Postgres.md",
+    "Один к одному (SQL).md",
+    "Модуль Pydantic.md",
+    "Многие ко многим (SQL).md",
+    "venv.md",
+    "SQLAlchemy ORM.md",
+    "SQLAlchemy Core.md",
+    "Pydantic.md",
+    "ACID.md",
+    "SQLAlchemy.md",
+    "Создание таблиц в SQLAlchemy.md",
+    "psycopg.md",
+    "Работа с БД.md",
     "asyncpg.md",
+    "Добавление таблиц.md",
+    "Заполнение.md",
     "Выборка данных.md",
+    "PostgreSQL.md",
     "Типы данных PostgreSQL.md",
+    "Один ко многим.md",
+    "Один к одному.md",
+    "Многие ко многим.md",
     "Математические операторы.md",
+    "Установка Postgres.md",
     "Git.md",
-    "Менеджер состояния.md",
     "Строки/Методы строк",
     "Строки",
-    "Untitled.base"
+    "Untitled.base",
+    "Untitled.canvas"
   ]
 }
